@@ -1,8 +1,11 @@
 <?php
 
 require_once './classes/Genre.php';
+require_once './traits/Rating.php';
 
 class Movie {
+    use Rating;
+
     public $title;
     public $director;
     public $year;
@@ -23,6 +26,6 @@ class Movie {
 
         $genreList = implode(', ', $genreNames);
 
-        return "Titolo: $this->title<br>Regista: $this->director<br>Anno: $this->year<br>Generi: $genreList<br><br>";
-    }
+return "Titolo: $this->title<br>Regista: $this->director<br>Anno: $this->year<br>Generi: $genreList<br>" .
+               $this->getRatingDescription() . "<br><br>";    }
 }
